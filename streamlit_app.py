@@ -11,7 +11,7 @@ websocket = connect("wss://araeyn-schoolquest.hf.space")
 def response_generator(message):
     websocket.send(json.dumps({"token": st.session_state.session_id, "message": prompt, "response": prompt}))
     message = json.loads(websocket.recv())
-    print(f"Received: {type(message)} || {message}")
+    print(f"{message}")
     response = message["response"].replace("\n", "  \n")
     #for word in response.split():
     #    yield word + " "
