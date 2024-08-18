@@ -13,7 +13,7 @@ def response_generator(message):
     message = json.loads(websocket.recv())
     print(f"{message}")
     response = message["response"]
-    response = response.replace("\n", "new  \nline")
+    response = response.replace("\n", "  \n")
     #for word in response.split():
     #    yield word + " "
     #    time.sleep(0.05)
