@@ -22,7 +22,7 @@ if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "What do you want to know about CHS?"}]
 
 st.title("School Quest 🏫 ")
-st.caption("Get info about schools.")
+st.caption("Hi! I am a Cupertino High School Q/A chatbot, designed to assist students, parents, and community members with information about our school. ")
 if "session_id" not in st.session_state:
     st.session_state.session_id = secrets.token_urlsafe(16)
 
