@@ -12,7 +12,7 @@ def response_generator(message):
     websocket.send(json.dumps({"token": st.session_state.session_id, "message": prompt, "response": prompt}))
     message = json.loads(websocket.recv())
     print(f"{message}")
-    response = message["response"]
+    response = message["response"]    
     response = response.replace("\n", "  \n")
     #for word in response.split():
     #    yield word + " "
@@ -32,11 +32,9 @@ for message in st.session_state.messages:
         st.write(message["content"])
 
 if prompt := st.chat_input("What is up?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
         # response = st.write_stream(response_generator(prompt))
         response = st.write(response_generator(prompt))
-    st.session_state.messages.append({"role": "assistant", "content": response})
