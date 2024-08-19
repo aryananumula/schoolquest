@@ -14,10 +14,9 @@ def response_generator(message):
     print(f"{message}")
     response = message["response"]    
     response = response.replace("\n", "  \n")
-    #for word in response.split():
-    #    yield word + " "
-    #    time.sleep(0.05)
-    return response
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "What do you want to know about CHS?"}]
@@ -31,10 +30,12 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+
 if prompt := st.chat_input("What is up?"):
+    st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        # response = st.write_stream(response_generator(prompt))
-        response = st.write(response_generator(prompt))
+        response = st.write_stream(response_generator(prompt))
+    st.session_state.messages.append({"role": "assistant", "content": response})
