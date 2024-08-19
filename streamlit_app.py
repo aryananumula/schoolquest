@@ -20,7 +20,7 @@ def response_generator(message):
     return response
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "What do you want to know about CHS?"}]
 
 st.title("School Quest 🏫 ")
 st.caption("Get info about schools.")
