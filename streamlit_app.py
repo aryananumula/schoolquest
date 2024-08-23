@@ -14,9 +14,10 @@ def response_generator(message):
     print(f"{message}")
     response = message["response"]    
     response = response.replace("\n", "  \n")
-    for word in response.split():
-        yield word + " "
-        time.sleep(0.05)
+    #for word in response.split():
+    #    yield word + " "
+    #    time.sleep(0.05)
+    return response
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "What do you want to know about CHS?"}]
