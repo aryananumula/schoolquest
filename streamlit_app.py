@@ -39,5 +39,5 @@ if prompt := st.chat_input("What is up?"):
 
     with st.chat_message("assistant"):
         response = response_generator(prompt)
-        st.text(response)
+        st.write(response)
     st.session_state.messages.append({"role": "assistant", "content": response})
