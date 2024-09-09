@@ -14,9 +14,9 @@ def response_generator(message):
     print(f"{message}")
     response = message["response"]    
     response = response.replace("\n", "  \n")
-    #for word in response.split():
-    #    yield word + " "
-    #    time.sleep(0.05)
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
     return response
 
 if "messages" not in st.session_state:
@@ -38,6 +38,6 @@ if prompt := st.chat_input("What is up?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        response = response_generator(prompt)
-        st.write(response)
+        #response = response_generator(prompt)
+        response = st.write_stream(prompt)
     st.session_state.messages.append({"role": "assistant", "content": response})
