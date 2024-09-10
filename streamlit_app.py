@@ -38,6 +38,5 @@ if prompt := st.chat_input("What is up?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        #response = response_generator(prompt)
-        response = st.write_stream(prompt)
+        response = st.write_stream(response)
     st.session_state.messages.append({"role": "assistant", "content": response})
