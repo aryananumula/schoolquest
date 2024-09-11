@@ -9,7 +9,7 @@ import secrets
 websocket = connect("wss://araeyn-schoolquest.hf.space")
 
 def response_generator(message):
-    websocket.send(json.dumps({"token": st.session_state.session_id, "message": prompt, "response": prompt}))
+    websocket.send(json.dumps({"token": st.session_state.session_id, "message": message, "response": message}))
     message = json.loads(websocket.recv())
     print(f"{message}")
     response = message["response"]    
